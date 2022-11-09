@@ -14,6 +14,6 @@ setup(
     url='https://github.com/robertostling/eflomal',
     license='GNU GPLv3',
     install_requires=['numpy'],
-    ext_modules=cythonize(['eflomal', '*.pyx'])
+    ext_modules=cythonize(['eflomal', 'python/eflomal/eflomal.pyx'])
 )
 
