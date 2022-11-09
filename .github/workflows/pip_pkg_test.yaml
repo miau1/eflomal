@@ -11,4 +11,4 @@ jobs:
       - run: pip install numpy
       - run: make
       - run: make install
-      - run: eflomal_env/bin/python3 setup.py install
+      - run: python setup.py install --user
