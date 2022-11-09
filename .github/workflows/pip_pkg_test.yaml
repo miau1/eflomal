@@ -12,3 +12,6 @@ jobs:
       - run: make
       - run: make install
       - run: python setup.py install --user
+      - run: pip install --upgrade build
+      - run: python -m build
+      - run: ls dist
