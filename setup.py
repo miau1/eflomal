@@ -4,7 +4,7 @@ from setuptools import setup, Extension
 from Cython.Build import cythonize
 import numpy
 
-cyalign_ext=Extension('eflomal', ['*.pyx'],
+cyalign_ext=Extension('eflomal', ['python/eflomal/eflomal.pyx'],
                       include_dirs=[numpy.get_include()])
 
 setup(
@@ -14,6 +14,6 @@ setup(
     url='https://github.com/robertostling/eflomal',
     license='GNU GPLv3',
     install_requires=['numpy'],
-    ext_modules=cythonize(cyalign_ext)
+    ext_modules=cythonize(['eflomal', '*.pyx'])
 )
 
