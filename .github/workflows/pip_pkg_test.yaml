@@ -1,0 +1,8 @@
+name: Build test
+on: [push]
+jobs:
+  build:
+    steps:
+      - run: make
+      - run: make install
+      - run: python setup.py install
