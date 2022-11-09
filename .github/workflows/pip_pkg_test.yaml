@@ -6,6 +6,7 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - run: pip install Cython
+      - run: pip install numpy
       - run: make
       - run: make install
       - run: python setup.py install
