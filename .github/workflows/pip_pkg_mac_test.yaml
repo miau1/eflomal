@@ -8,7 +8,6 @@ jobs:
       - run: python3 -m pip install virtualenv
       - run: python3 -m venv eflomal_env
       - run: source eflomal_env/bin/activate
-#      - run: pip install numpy Cython auditwheel patchelf twine build --upgrade
       - run: python3 -m pip install numpy Cython twine build --upgrade
       - run: sed -i 'orig' -e 's/\-lrt //' Makefile
       - run: sed -i 'orig' -e 's/install -t \$(INSTALLDIR) eflomal/install eflomal \$(INSTALLDIR)/' Makefile
@@ -16,9 +15,6 @@ jobs:
       - run: make install
       - run: python3 -m build --sdist
       - run: python3 -m build --wheel
-#      - run: auditwheel repair dist/*.whl
-#      - run: rm dist/*.whl
-#      - run: mv wheelhouse/*.whl dist
       - name: Upload to PYPI
         env:
           TWINE_USERNAME: ${{ secrets.TEST_PYPI_USER }}
