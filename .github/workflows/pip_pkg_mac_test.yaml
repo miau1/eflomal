@@ -5,6 +5,8 @@ jobs:
     runs-on: macos-latest
     steps:
       - uses: actions/checkout@v3
+      - run: brew install gcc
+      - run: brew list gcc
       - run: python3 -m pip install virtualenv
       - run: python3 -m venv eflomal_env
       - run: source eflomal_env/bin/activate
