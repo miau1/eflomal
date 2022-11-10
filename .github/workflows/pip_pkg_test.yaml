@@ -10,7 +10,7 @@ jobs:
       - run: pip install numpy Cython auditwheel patchelf twine build --upgrade
       - run: make
       - run: make install
-      - run: python setup.py install
+      - run: python setup.py install --user
       - run: python -m build --sdist
       - run: python -m build --wheel
       - run: auditwheel repair dist/*.whl
