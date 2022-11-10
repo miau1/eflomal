@@ -9,11 +9,11 @@ cyalign_ext=Extension('eflomal', ['python/eflomal/eflomal.pyx'],
 
 setup(
     name='eflomal',
-    version='0.1',
+    version='0.1.4',
     author='Robert Östling',
     url='https://github.com/robertostling/eflomal',
     license='GNU GPLv3',
-    install_requires=['numpy'],
-    ext_modules=cythonize(['eflomal', 'python/eflomal/eflomal.pyx'])
+    install_requires=['numpy', 'Cython'],
+    ext_modules=cythonize(cyalign_ext)
 )
 
