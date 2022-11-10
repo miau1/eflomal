@@ -7,7 +7,7 @@ jobs:
       - uses: actions/checkout@v3
       - run: python -m venv eflomal_env
       - run: source eflomal_env/bin/activate
-      - run: pip install Cython, numpy, auditwheel, patchelf, twine, build --upgrade
+      - run: pip install numpy Cython auditwheel patchelf twine build --upgrade
       - run: make
       - run: make install
       - run: python -m build --sdist
