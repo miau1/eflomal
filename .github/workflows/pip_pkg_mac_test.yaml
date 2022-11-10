@@ -10,8 +10,8 @@ jobs:
       - run: source eflomal_env/bin/activate
 #      - run: pip install numpy Cython auditwheel patchelf twine build --upgrade
       - run: python3 -m pip install numpy Cython twine build --upgrade
-      - run: sed -i 's/\-lrt //' Makefile
-      - run: sed -i 's/install -t \$(INSTALLDIR) eflomal/install eflomal \$(INSTALLDIR)/' Makefile
+      - run: sed -i 'orig' -e 's/\-lrt //' Makefile
+      - run: sed -i 'orig' -e 's/install -t \$(INSTALLDIR) eflomal/install eflomal \$(INSTALLDIR)/' Makefile
       - run: make CXX=g++-12 CC=gcc-12
       - run: make install
       - run: python3 -m build --sdist
