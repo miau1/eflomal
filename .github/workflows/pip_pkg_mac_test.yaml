@@ -1,0 +1,23 @@
+name: Build test
+on: [push]
+jobs:
+  build:
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v3
+      - run: python -m venv eflomal_env
+      - run: source eflomal_env/bin/activate
+#      - run: pip install numpy Cython auditwheel patchelf twine build --upgrade
+      - run: pip install numpy Cython twine build --upgrade
+      - run: make
+      - run: make install
+      - run: python -m build --sdist
+      - run: python -m build --wheel
+#      - run: auditwheel repair dist/*.whl
+#      - run: rm dist/*.whl
+#      - run: mv wheelhouse/*.whl dist
+      - name: Upload to PYPI
+        env:
+          TWINE_USERNAME: ${{ secrets.TEST_PYPI_USER }}
+          TWINE_PASSWORD: ${{ secrets.TEST_PYPI_TOKEN }}
+        run: twine upload --repository testpypi dist/*
