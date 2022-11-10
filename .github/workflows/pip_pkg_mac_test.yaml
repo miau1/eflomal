@@ -10,7 +10,7 @@ jobs:
       - run: source eflomal_env/bin/activate
 #      - run: pip install numpy Cython auditwheel patchelf twine build --upgrade
       - run: python3 -m pip install numpy Cython twine build --upgrade
-      - run: export PATH=$PATH:/Library/Frameworks/Python.framework/Versions/3.11/bin
+      - run: gcc-12 -shared -o build/libbwa.so build/*.o -lz
       - run: make CXX=g++-12 CC=gcc-12
       - run: make install
       - run: python3 -m build --sdist
