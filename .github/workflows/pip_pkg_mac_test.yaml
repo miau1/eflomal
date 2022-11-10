@@ -19,4 +19,4 @@ jobs:
         env:
           TWINE_USERNAME: ${{ secrets.TEST_PYPI_USER }}
           TWINE_PASSWORD: ${{ secrets.TEST_PYPI_TOKEN }}
-        run: python3 -m twine upload --repository testpypi dist/*
+        run: python3 -m twine upload --repository testpypi dist/*.whl
