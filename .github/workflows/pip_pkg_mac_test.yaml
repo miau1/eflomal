@@ -5,14 +5,12 @@ jobs:
     runs-on: macos-latest
     steps:
       - uses: actions/checkout@v3
-      - run: brew install gcc
-      - run: brew list gcc
       - run: python3 -m pip install virtualenv
       - run: python3 -m venv eflomal_env
       - run: source eflomal_env/bin/activate
 #      - run: pip install numpy Cython auditwheel patchelf twine build --upgrade
       - run: python3 -m pip install numpy Cython twine build --upgrade
-      - run: make
+      - run: make CXX=g++-12 CC=gcc-12
       - run: make install
       - run: python3 -m build --sdist
       - run: python3 -m build --wheel
