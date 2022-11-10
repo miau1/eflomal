@@ -9,7 +9,7 @@ cyalign_ext=Extension('eflomal', ['python/eflomal/eflomal.pyx'],
 
 setup(
     name='eflomal',
-    version='0.1.4',
+    version='0.1.5',
     author='Robert Östling',
     url='https://github.com/robertostling/eflomal',
     license='GNU GPLv3',
