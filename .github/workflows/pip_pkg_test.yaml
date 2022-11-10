@@ -9,9 +9,19 @@ jobs:
       - run: source eflomal_env/bin/activate
       - run: pip install Cython
       - run: pip install numpy
+      - run: pip install auditwheel
+      - run: pip install patchelf
+      - run: pip install twine
       - run: make
       - run: make install
 #      - run: python setup.py install --user
       - run: pip install --upgrade build
-      - run: python -m build
-      - run: ls dist
+      - run: python -m build --sdist
+      - run: python -m build --wheel
+      - run: auditwheel repair dist/*.whl
+      - run: rm dist/*.whl
+      - run: mv wheelhouse/*.whl dist
+      - env:
+          TWINE_USERNAME: ${{ secrets.TEST_PYPI_USER }}
+          TWINE_PASSWORD: ${{ secrets.TEST_PYPI_TOKEN }}
+      - run: twine upload --repository testpypi dist/*
