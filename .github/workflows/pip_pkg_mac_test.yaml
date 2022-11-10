@@ -11,6 +11,8 @@ jobs:
 #      - run: pip install numpy Cython auditwheel patchelf twine build --upgrade
       - run: python3 -m pip install numpy Cython twine build --upgrade
       - run: gcc-12 -shared -o build/libbwa.so build/*.o -lz
+      - run: sed -i 's/\-lrt //' Makefile
+      - run: sed -i 's/install -t \$(INSTALLDIR) eflomal/install eflomal \$(INSTALLDIR)/' Makefile
       - run: make CXX=g++-12 CC=gcc-12
       - run: make install
       - run: python3 -m build --sdist
