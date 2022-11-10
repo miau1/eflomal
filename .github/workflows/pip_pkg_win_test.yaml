@@ -6,17 +6,18 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - run: python3 -m venv eflomal_env
-      - run: ./eflomal_env/bin/activate
-      - run: python3 -m pip install numpy Cython auditwheel patchelf twine build --upgrade
+      - run: .\eflomal_env\bin\activate
+#      - run: python3 -m pip install numpy Cython auditwheel patchelf twine build --upgrade
+      - run: python3 -m pip install numpy Cython twine build --upgrade
       - run: make
       - run: make install
       - run: python3 -m build --sdist
       - run: python3 -m build --wheel
-      - run: auditwheel repair dist/*.whl
-      - run: rm dist/*.whl
-      - run: mv wheelhouse/*.whl dist
+#      - run: auditwheel repair dist/*.whl
+#      - run: rm dist/*.whl
+#      - run: mv wheelhouse/*.whl dist
       - name: Upload to PYPI
         env:
           TWINE_USERNAME: ${{ secrets.TEST_PYPI_USER }}
           TWINE_PASSWORD: ${{ secrets.TEST_PYPI_TOKEN }}
-        run: python3 -m twine upload --repository testpypi dist/*whl
+        run: python3 -m twine upload --repository testpypi dist\*whl
