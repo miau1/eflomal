@@ -18,7 +18,7 @@ setup(
     license='GNU GPLv3',
     description='pip installable eflomal',
     long_description=long_description,
-    long_descritpion_type='text/markdown',
+    long_description_content_type='text/markdown',
     install_requires=['numpy', 'Cython'],
     ext_modules=cythonize(cyalign_ext, language_level='3'),
     scripts=['align.py', 'makepriors.py', 'mergefiles.py']
