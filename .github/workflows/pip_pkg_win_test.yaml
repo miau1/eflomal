@@ -1,5 +1,7 @@
 name: Build test
-on: [push]
+on:
+  push:
+    branches: [master]
 jobs:
   build:
     runs-on: windows-latest
