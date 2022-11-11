@@ -1,9 +1,3 @@
-# pip installable eflomal
-
-This is a pip installable `eflomal` package for the python scripts `align.py`, `makepriors.py` and `mergefiles.py`. Installation:
-
-   `pip install eflomal`
-
 # eflomal
 Efficient Low-Memory Aligner
 
