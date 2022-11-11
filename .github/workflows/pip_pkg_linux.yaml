@@ -15,6 +15,7 @@ jobs:
       - run: auditwheel repair dist/*.whl
       - run: rm dist/*.whl
       - run: mv wheelhouse/*.whl dist
+      - run: twine check dist/*
       - name: Upload to PYPI
         env:
           TWINE_USERNAME: ${{ secrets.PYPI_USERNAME }}
