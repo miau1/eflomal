@@ -21,6 +21,8 @@ setup(
     long_description_content_type="text/markdown",
     install_requires=['numpy', 'Cython'],
     ext_modules=cythonize(cyalign_ext, language_level="3"),
-    scripts=['align.py', 'makepriors.py', 'mergefiles.py']
+    scripts=['align.py', 'makepriors.py', 'mergefiles.py'],
+    package_data = { '': ['python/eflomal/eflomal.pyx', 'eflomal']},
+    include_package_data = True
 )
 
