@@ -4,6 +4,6 @@ import eflomal
 import subprocess as sp
 import sys
 
-path = eflomalpkg.__path__[0]
+path = eflomal.__path__[0]
 command = path + "/eflomal"
 sp.call([command] + sys.argv)
