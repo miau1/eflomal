@@ -12,7 +12,7 @@ with open("README.md", "r") as fh:
 
 setup(
     name='eflomal',
-    version='0.1.26',
+    version='0.1.27',
     author='Robert Östling',
     url='https://github.com/robertostling/eflomal',
     license='GNU GPLv3',

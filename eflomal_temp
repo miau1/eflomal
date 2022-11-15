@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-import eflomalpkg
+import eflomal
 import subprocess as sp
 import sys
 
