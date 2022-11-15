@@ -12,8 +12,8 @@ jobs:
       - run: pip install numpy Cython auditwheel patchelf twine build --upgrade
       - run: make
       - run: make install
-      - run: mv eflomal scripts
-      - run: mv eflomal_temp eflomal
+        #      - run: mv eflomal scripts
+        #      - run: mv eflomal_temp eflomal
       - run: python -m build --sdist
       - run: python -m build --wheel
       - run: auditwheel repair dist/*.whl
