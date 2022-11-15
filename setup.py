@@ -12,7 +12,7 @@ with open("README.md", "r") as fh:
 
 setup(
     name='eflomal',
-    version='0.1.24',
+    version='0.1.25',
     author='Robert Östling',
     url='https://github.com/robertostling/eflomal',
     license='GNU GPLv3',
@@ -22,6 +22,6 @@ setup(
     install_requires=['numpy', 'Cython'],
     ext_modules=cythonize(cyalign_ext, language_level="3"),
     package_data={'eflomalpkg': ['eflomal']},
-    scripts=['align.py', 'makepriors.py', 'mergefiles.py']
+    scripts=['align.py', 'makepriors.py', 'mergefiles.py', 'eflomal']
 )
 
