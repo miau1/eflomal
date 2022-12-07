@@ -13,6 +13,7 @@ eflomal.o: eflomal.c natmap.c hash.c random.c simd_math_prims.h
 eflomal: eflomal.o
 
 python-install: eflomal
+	mkdir -p $(PYINSTALLDIR)
 	install -t $(PYINSTALLDIR) eflomal
 
 install: eflomal

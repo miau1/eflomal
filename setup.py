@@ -1,8 +1,23 @@
 #!/usr/bin/env python3
 
 from setuptools import setup, Extension
+from setuptools.command.install import install
+import subprocess
 from Cython.Build import cythonize
 import numpy
+
+
+def compile_and_install_software():
+    subprocess.check_call('make eflomal', shell=True)
+    subprocess.check_call('make python-install', shell=True)
+
+
+class CustomInstall(install):
+    """Custom handler for the 'install' command."""
+    def run(self):
+        compile_and_install_software()
+        super().run()
+
 
 cyalign_ext=Extension('eflomal.cython', ['python/eflomal/eflomal.pyx'],
                       include_dirs=[numpy.get_include()])
@@ -26,6 +41,6 @@ setup(
     },
     packages=['eflomal'],
     package_dir = {'': 'python'},
-    scripts=['align.py', 'makepriors.py', 'mergefiles.py']
+    scripts=['align.py', 'makepriors.py', 'mergefiles.py'],
+    cmdclass={'install': CustomInstall}
 )
-
