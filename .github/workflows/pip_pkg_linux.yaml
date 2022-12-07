@@ -9,7 +9,7 @@ jobs:
       - run: source eflomal_env/bin/activate
       - run: pip install numpy Cython auditwheel patchelf twine build --upgrade
       - run: make
-      - run: make install
+      - run: make python-install
       - run: python -m build --sdist
       - run: python -m build --wheel
       - run: auditwheel repair dist/*.whl

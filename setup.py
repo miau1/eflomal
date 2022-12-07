@@ -4,7 +4,7 @@ from setuptools import setup, Extension
 from Cython.Build import cythonize
 import numpy
 
-cyalign_ext=Extension('eflomal', ['python/eflomal/eflomal.pyx'],
+cyalign_ext=Extension('eflomal.cython', ['python/eflomal/eflomal.pyx'],
                       include_dirs=[numpy.get_include()])
 
 with open('README.md', 'r') as fh:
@@ -21,6 +21,11 @@ setup(
     long_description_content_type='text/markdown',
     install_requires=['numpy', 'Cython'],
     ext_modules=cythonize(cyalign_ext, language_level='3'),
+    package_data={
+        'eflomal':['bin/eflomal']
+    },
+    packages=['eflomal'],
+    package_dir = {'': 'python'},
     scripts=['align.py', 'makepriors.py', 'mergefiles.py']
 )
 

@@ -85,7 +85,7 @@ def main():
     parser.add_argument(
         '-p', '--priors', dest='priors_filename', type=str, metavar='filename',
         help='File to read priors from')
- 
+
     args = parser.parse_args()
 
     if not (args.joint_filename or (args.source_filename and
@@ -94,7 +94,7 @@ def main():
                 file=sys.stderr, flush=True)
         sys.exit(1)
 
-    for filename in ((args.joint_filename,) if args.joint_filename else 
+    for filename in ((args.joint_filename,) if args.joint_filename else
                      (args.source_filename, args.target_filename)):
         if not os.path.exists(filename):
             print('ERROR: input file %s does not exist!' % filename,
@@ -347,4 +347,3 @@ def main():
 
 
 if __name__ == '__main__': main()
-
