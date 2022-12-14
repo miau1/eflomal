@@ -41,6 +41,6 @@ setup(
     },
     packages=['eflomal'],
     package_dir = {'': 'python'},
-    scripts=['align.py', 'makepriors.py', 'mergefiles.py'],
+    scripts=['python/scripts/eflomal-align', 'python/scripts/eflomal-makepriors'],
     cmdclass={'install': CustomInstall}
 )
