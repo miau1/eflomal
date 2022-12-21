@@ -8,8 +8,8 @@ import numpy
 
 
 def compile_and_install_software():
-    subprocess.check_call('make eflomal', shell=True)
-    subprocess.check_call('make python-install', shell=True)
+    subprocess.check_call('make -C src eflomal', shell=True)
+    subprocess.check_call('make -C src python-install', shell=True)
 
 
 class CustomInstall(install):
@@ -35,12 +35,12 @@ setup(
     long_description=long_description,
     long_description_content_type='text/markdown',
     install_requires=['numpy', 'Cython'],
-    ext_modules=cythonize(cyalign_ext, language_level='3'),
-    package_data={
-        'eflomal':['bin/eflomal']
-    },
     packages=['eflomal'],
-    package_dir = {'': 'python'},
+    package_dir={'': 'python'},
+    package_data={
+        'eflomal': ['bin/eflomal']
+    },
+    ext_modules=cythonize(cyalign_ext, language_level='3'),
     scripts=['python/scripts/eflomal-align', 'python/scripts/eflomal-makepriors'],
     cmdclass={'install': CustomInstall}
 )
