@@ -157,8 +157,8 @@ def calculate_priors(src_sentences, trg_sentences,
             zip(src_sentences, trg_sentences, fwd_alignments, rev_alignments)):
         src_sent = src_sent.strip().split()
         trg_sent = trg_sent.strip().split()
-        fwd_links = [tuple(map(int, s.split(b'-'))) for s in fwd_line.split()]
-        rev_links = [tuple(map(int, s.split(b'-'))) for s in rev_line.split()]
+        fwd_links = [tuple(map(int, s.split('-'))) for s in fwd_line.split()]
+        rev_links = [tuple(map(int, s.split('-'))) for s in rev_line.split()]
         for i, j in fwd_links:
             if i >= len(src_sent) or j >= len(trg_sent):
                 logger.error('alignment out of bounds in line %d: '

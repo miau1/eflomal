@@ -56,14 +56,14 @@ def main():
             sys.exit(1)
 
     if args.joint_filename:
-        with open(args.forward_alignments_filename, 'rb') as fwdf, \
-             open(args.reverse_alignments_filename, 'rb') as revf, \
+        with open(args.forward_alignments_filename, 'r', encoding='utf-8') as fwdf, \
+             open(args.reverse_alignments_filename, 'r', encoding='utf-8') as revf, \
              open(args.joint_filename, 'r', encoding='utf-8') as jointf:
             priors_list, hmmf_priors, hmmr_priors, ferf_priors, ferr_priors = \
                 calculate_priors(*zip(*sentences_from_joint_file(jointf)), fwdf, revf)
     else:
-        with open(args.forward_alignments_filename, 'rb') as fwdf, \
-             open(args.reverse_alignments_filename, 'rb') as revf, \
+        with open(args.forward_alignments_filename, 'r', encoding='utf-8') as fwdf, \
+             open(args.reverse_alignments_filename, 'r', encoding='utf-8') as revf, \
              open(args.source_filename, 'r', encoding='utf-8') as srcf, \
              open(args.target_filename, 'r', encoding='utf-8') as trgf:
             priors_list, hmmf_priors, hmmr_priors, ferf_priors, ferr_priors = \
