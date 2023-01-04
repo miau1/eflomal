@@ -1,10 +1,5 @@
-# pip installable eflomal
-
-This is a pip installable `eflomal` package for the python scripts `align.py`, `makepriors.py` and `mergefiles.py`. Installation:
-
-   `pip install eflomal`
-
 # eflomal
+
 Efficient Low-Memory Aligner
 
 This is a word alignment tool based on
@@ -24,17 +19,17 @@ the following article:
 
 ## Installing
 
-To install the complete Python package, simply run:
+To install the complete Python package, run:
 
 	python -m pip install .
 
-If you want to compile and install only the C binary:
+If you want to compile and install only the C binary, run:
 
     make -C src
     sudo make -C src install
 
 Change the `INSTALLDIR` parameter in the install step if you want to install somewhere
-other than the default `/usr/local/bin` (e.g. `make install -e INSTALLDIR=~/bin`).
+other than the default `/usr/local/bin` (e.g. `make -C src -e INSTALLDIR=~/bin install`).
 
 ## Using
 
@@ -140,6 +135,40 @@ for an example).
 
 In case you made a mistake with the direction, you can fix it afterwards with
 `scripts/reverse_moses.py`.
+
+## Python interface
+
+The Python package provides an interface for aligning and estimating
+priors. Here is a simple example using the files in [testdata](./testdata):
+
+```python
+import eflomal
+
+aligner = eflomal.Aligner()
+
+with open('test1.sv', 'r', encoding='utf-8') as src_data, \
+     open('test1.en', 'r', encoding='utf-8') as trg_data, \
+     open('test1.priors', 'r', encoding='utf-8') as priors_data:
+    # Align with priors
+    aligner.align(
+        src_data, trg_data,
+        links_filename_fwd='sv-en.fwd', links_filename_rev='sv-en.rev',
+        priors_input=priors_data)
+
+with open('test1.sv', 'r', encoding='utf-8') as src_data, \
+     open('test1.en', 'r', encoding='utf-8') as trg_data, \
+     open('sv-en.fwd', 'r', encoding='utf-8') as fwd_links, \
+     open('sv-en.rev', 'r', encoding='utf-8') as rev_links, \
+     open('sv-en.priors', 'w', encoding='utf-8') as priors_f:
+    # Estimate priors
+    priors_tuple = eflomal.calculate_priors(
+        src_data, trg_data, fwd_links, rev_links)
+    # Write priors to file
+    eflomal.write_priors(priors_f, *priors_tuple)
+```
+
+Note that the output files for `Aligner.align()` are given as paths,
+not file objects, as they are written directly by the `eflomal` binary.
 
 ## Performance
 
