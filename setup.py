@@ -27,7 +27,7 @@ tests_require = ['pytest']
 
 setup(
     name='eflomal',
-    version='1.0.0-beta1',
+    version='1.0.0-beta2',
     author='Robert Östling',
     url='https://github.com/robertostling/eflomal',
     license='GNU GPLv3',
